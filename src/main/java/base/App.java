@@ -23,17 +23,27 @@ Write a version of the program that displays different greetings for different p
 Write a version of the program that displays the greeting in a GUI window.
  */
 public class App {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+    static Scanner in = new Scanner(System.in);
 
-        // input
+    public static void main(String[] args) {
+        App myApp = new App();
+
+        String name = myApp.readName();
+        String outputString = myApp.generateOutputString(name);
+        myApp.printOutput(outputString);
+    }
+
+    public void printOutput(String outputString) {
+        System.out.println(outputString);
+    }
+
+    public String readName() {
         System.out.print("What is your name? ");
         String name = in.nextLine();
+        return name;
+    }
 
-        // concat
-        String outputString = "Hello, " + name + ", nice to meet you!";
-
-        // output
-        System.out.println(outputString);
+    public String generateOutputString(String name) {
+        return String.format("Hello, %s, nice to meet you!", name);
     }
 }
